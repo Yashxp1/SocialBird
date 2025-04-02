@@ -1,30 +1,27 @@
 import { Request, Response } from 'express';
 import { generateToken } from '../lib/token';
 import User from '../models/user.model';
-import { registerSchema } from '../lib/zod';
+import { registerSchema, loginSchema } from '../lib/zod';
 import bcrypt from 'bcrypt';
 
-export const register = async (req: Request, res: Response) => {
+export const register = async (req: Request, res: Response): Promise<void> => {
   try {
     const result = registerSchema.safeParse(req.body);
 
     if (!result.success) {
-      return res
-        .status(400)
-        .json({ success: false, errors: result.error.format() });
+      res.status(400).json({ success: false, errors: result.error.format() });
+      return;
     }
 
     const { name, username, email, password } = result.data;
 
-    const existingEmail = await User.findOne({ email });
-    const existingUsername = await User.findOne({ username });
+    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
 
-    if (existingEmail) {
-      return res.status(400).json({ error: 'Email already exists' });
+    if (existingUser) {
+      res.status(400).json({ error: 'Email or Username already exists' });
+      return;
     }
-    if (existingUsername) {
-      return res.status(400).json({ error: 'Username already exists' });
-    }
+
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -58,14 +55,13 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-export const login = async (req: Request, res: Response) => {
+export const login = async (req: Request, res: Response): Promise<void> => {
   try {
-    const result = registerSchema.safeParse(req.body);
+    const result = loginSchema.safeParse(req.body);
 
     if (!result.success) {
-      return res
-        .status(400)
-        .json({ success: false, error: result.error.format() });
+      res.status(400).json({ success: false, error: result.error.format() });
+      return;
     }
 
     const { username, email, password } = result.data;
@@ -76,18 +72,20 @@ export const login = async (req: Request, res: Response) => {
 
     const user = await User.findOne({ $or: query });
     if (!user) {
-      return res.status(400).json({
+      res.status(400).json({
         success: false,
         message: 'Invalid credentials',
       });
+      return;
     }
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (!isPasswordCorrect) {
-      return res.status(400).json({
+      res.status(400).json({
         success: false,
         message: 'Invalid credentials',
       });
+      return;
     }
 
     generateToken(user._id, res);
@@ -120,4 +118,9 @@ export const logout = async (req: Request, res: Response) => {
     console.error('Error in logout controller', error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
+};
+
+export const updateProfile = async (req: Request, res: Response) => {
+  try {
+  } catch (error) {}
 };

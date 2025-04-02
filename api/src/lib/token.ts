@@ -10,8 +10,9 @@ export const generateToken = (userId: unknown, res: Response) => {
     httpOnly: true,
     secure: true,
     sameSite: 'strict',
+    maxAge: 7 * 24 * 60 * 60 * 1000, 
   });
-  res.status(200).json({ message: 'Login successful' });
+ 
 
   return token;
 };
