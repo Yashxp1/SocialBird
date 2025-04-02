@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { generateToken } from '../lib/token';
 import User from '../models/user.model';
-import { registerSchema, loginSchema } from '../lib/zod';
+import { registerSchema, loginSchema, updateSchema } from '../lib/zod';
 import bcrypt from 'bcrypt';
 import cloudinary from '../lib/cloudinary';
 
@@ -122,27 +122,36 @@ export const logout = async (req: Request, res: Response) => {
 
 export const updateProfile = async (req: Request, res: Response) => {
   try {
-    const { profilePic } = req.body;
-    const userId = req.user?._id;
+    const result = updateSchema.safeParse(req.body);
 
-    if (!profilePic) {
-      res.status(400).json({ message: 'Profile pic is required' });
-      return;
+    if (!result.success) {
+      return res
+        .status(400)
+        .json({ success: false, errors: result.error.format() });
     }
 
-    const uploadResponse = await cloudinary.uploader.upload(profilePic, {
-      folder: 'profile_pics',
+    const { profilePic } = result.data;
+    const userId = req.user?._id;
+
+    let updatedFields: { profilePic?: string } = {};
+
+    if (profilePic) {
+      const uploadResponse = await cloudinary.uploader.upload(profilePic, {
+        folder: 'profile_pics',
+      });
+      updatedFields.profilePic = uploadResponse.secure_url;
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(userId, updatedFields, {
+      new: true,
     });
-
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      { profilePic: uploadResponse.secure_url },
-      { new: true }
-    );
-
     if (!updatedUser) {
       res.status(404).json({ message: 'User not found' });
       return;
+    }
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: 'User not found' });
     }
 
     res.status(200).json(updatedUser);

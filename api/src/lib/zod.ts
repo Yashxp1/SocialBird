@@ -29,5 +29,5 @@ export const loginSchema = z
   });
 
 export const updateSchema = z.object({
-  profilePic: profilePicSchema.optional(),
+  profilePic: profilePicSchema.url().optional(),
 });
