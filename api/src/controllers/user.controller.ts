@@ -109,3 +109,15 @@ export const login = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const logout = async (req: Request, res: Response) => {
+  try {
+    res.cookie('jwt', '', { maxAge: 0 });
+    res
+      .status(201)
+      .json({ success: false, message: 'User logged out successfully' });
+  } catch (error) {
+    console.error('Error in logout controller', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
