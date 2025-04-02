@@ -91,7 +91,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     generateToken(user._id, res);
 
     res.status(201).json({
-      success: false,
+      success: true,
       data: {
         id: user._id,
         name: user.name,

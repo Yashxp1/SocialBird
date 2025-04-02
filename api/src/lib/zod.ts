@@ -16,8 +16,13 @@ export const registerSchema = z.object({
   password: passwordSchema,
 });
 
-export const loginSchema = z.object({
-  username: usernameSchema,
-  email: emailSchema,
-  password: passwordSchema,
-});
+export const loginSchema = z
+  .object({
+    username: usernameSchema.optional(),
+    email: emailSchema.optional(),
+    password: passwordSchema,
+  })
+  .refine((data) => data.username || data.email, {
+    message: 'Either username or email is required',
+    path: ['email'],
+  });
