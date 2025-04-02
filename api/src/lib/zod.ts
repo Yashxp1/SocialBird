@@ -8,6 +8,7 @@ const emailSchema = z.string().email('Invalid email');
 const passwordSchema = z
   .string()
   .min(6, 'Password must be at least 6 characters');
+const profilePicSchema = z.string();
 
 export const registerSchema = z.object({
   name: nameSchema,
@@ -26,3 +27,7 @@ export const loginSchema = z
     message: 'Either username or email is required',
     path: ['email'],
   });
+
+export const updateSchema = z.object({
+  profilePic: profilePicSchema.optional(),
+});

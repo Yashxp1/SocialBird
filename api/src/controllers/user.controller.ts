@@ -3,6 +3,7 @@ import { generateToken } from '../lib/token';
 import User from '../models/user.model';
 import { registerSchema, loginSchema } from '../lib/zod';
 import bcrypt from 'bcrypt';
+import cloudinary from '../lib/cloudinary';
 
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -21,7 +22,6 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       res.status(400).json({ error: 'Email or Username already exists' });
       return;
     }
-
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -122,5 +122,32 @@ export const logout = async (req: Request, res: Response) => {
 
 export const updateProfile = async (req: Request, res: Response) => {
   try {
-  } catch (error) {}
+    const { profilePic } = req.body;
+    const userId = req.user?._id;
+
+    if (!profilePic) {
+      res.status(400).json({ message: 'Profile pic is required' });
+      return;
+    }
+
+    const uploadResponse = await cloudinary.uploader.upload(profilePic, {
+      folder: 'profile_pics',
+    });
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { profilePic: uploadResponse.secure_url },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      res.status(404).json({ message: 'User not found' });
+      return;
+    }
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    console.log('error in update profile:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 };
