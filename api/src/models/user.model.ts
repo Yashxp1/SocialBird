@@ -5,6 +5,7 @@ interface UserType extends Document {
   username: string;
   email: string;
   password: string;
+  profilePic: string
 }
 
 const userSchema = new Schema<UserType>({
@@ -30,8 +31,11 @@ const userSchema = new Schema<UserType>({
   password: {
     type:String,
     required: true,
-  }
-});
+  },   profilePic: {
+    type: String,
+    default: "",
+  },
+}, {timestamps: true});
 
 const User = mongoose.model('User', userSchema) 
 export default User
