@@ -15,7 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   className = '',
 }) => {
-  const baseStyles = 'px-4 py-2 rounded-lg font-medium transition duration-200';
+  const baseStyles = 'px-4 py-2 rounded-xl font-medium transition duration-200';
 
   const variantStyles = {
     primary: 'bg-blue-500 text-white hover:bg-blue-600',
