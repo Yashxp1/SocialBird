@@ -120,14 +120,16 @@ export const logout = async (req: Request, res: Response) => {
   }
 };
 
-export const updateProfile = async (req: Request, res: Response) => {
+export const updateProfile = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const result = updateSchema.safeParse(req.body);
 
     if (!result.success) {
-      return res
-        .status(400)
-        .json({ success: false, errors: result.error.format() });
+      res.status(400).json({ success: false, errors: result.error.format() });
+      return;
     }
 
     const { profilePic } = result.data;
@@ -151,7 +153,8 @@ export const updateProfile = async (req: Request, res: Response) => {
     }
 
     if (!updatedUser) {
-      return res.status(404).json({ message: 'User not found' });
+      res.status(404).json({ message: 'User not found' });
+      return;
     }
 
     res.status(200).json(updatedUser);
