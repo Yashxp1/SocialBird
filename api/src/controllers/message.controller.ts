@@ -83,6 +83,8 @@ export const sendMessage = async (
     });
 
     await newMessage.save();
+
+    res.status(201).json(newMessage);
   } catch (error) {
     console.log('Error in send message', error);
     res.status(500).json({
