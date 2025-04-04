@@ -21,13 +21,6 @@ const userSchema = new Schema<UserType>({
     required : [true, "Username is required"],
     minlength: 3,
   } ,
-  email: {
-    type: String,
-    unique: [true, 'Email is is already taken'],
-    trim: true,
-    required : [true, "Email is required"],
-    minlength: 3,
-  }, 
   password: {
     type:String,
     required: true,

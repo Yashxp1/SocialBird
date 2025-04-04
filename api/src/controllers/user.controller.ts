@@ -14,12 +14,12 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    const { name, username, email, password } = result.data;
+    const { name, username, password } = result.data;
 
-    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
+    const existingUser = await User.findOne({ username });
 
     if (existingUser) {
-      res.status(400).json({ error: 'Email or Username already exists' });
+      res.status(400).json({ error: 'Username already exists' });
       return;
     }
 
@@ -29,7 +29,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     const newUser = new User({
       name,
       username,
-      email,
+
       password: hashedPassword,
     });
 
@@ -43,7 +43,6 @@ export const register = async (req: Request, res: Response): Promise<void> => {
           id: newUser._id,
           name: newUser.name,
           username: newUser.username,
-          email: newUser.email,
         },
       });
     }
@@ -64,13 +63,9 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    const { username, email, password } = result.data;
+    const { username, password } = result.data;
 
-    const query = [];
-    if (username) query.push({ username });
-    if (email) query.push({ email });
-
-    const user = await User.findOne({ $or: query });
+    const user = await User.findOne({ username });
     if (!user) {
       res.status(400).json({
         success: false,
@@ -96,7 +91,6 @@ export const login = async (req: Request, res: Response): Promise<void> => {
         id: user._id,
         name: user.name,
         username: user.username,
-        email: user.email,
       },
     });
   } catch (error) {
@@ -164,10 +158,10 @@ export const updateProfile = async (
   }
 };
 
-export const checkAuth = (req:Request, res: Response) => {
+export const checkAuth = (req: Request, res: Response) => {
   try {
     res.status(200).json(req.user);
   } catch (error) {
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ message: 'Internal Server Error' });
   }
-}
+};
