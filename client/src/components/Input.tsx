@@ -27,7 +27,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>( (
   const baseStyles = 'px-2 py-1.5 rounded-md';
 
   const variantStyles = {
-    primary: 'bg-blue-500 text-white hover:bg-blue-600',
+    primary: 'bg-gray-900 border-2 border-gray-500 m-2 text-white hover:bg-gray-800 w-74' ,
     secondary: 'bg-gray-500 text-white hover:bg-gray-600',
     danger: 'bg-red-500 text-white hover:bg-red-600',
   };
