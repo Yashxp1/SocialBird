@@ -1,5 +1,6 @@
 import Button from '../components/Button';
 import Input from '../components/Input';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   return (
@@ -28,14 +29,15 @@ const Register = () => {
             <span className="mx-2 text-gray-400">OR</span>
             <div className="flex-grow border-t border-gray-300" />
           </div>
-
-          <Button
-            label={'Login'}
-            type={'button'}
-            variant={'secondary'}
-            disabled={false}
-            onClick={() => console.log('Clicked')}
-          />
+          <Link to={'/Login'}>
+            <Button
+              label={'Login'}
+              type={'button'}
+              variant={'secondary'}
+              disabled={false}
+              onClick={() => console.log('Clicked')}
+            />
+          </Link>
         </div>
       </div>
     </div>
