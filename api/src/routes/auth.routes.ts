@@ -14,6 +14,6 @@ authRoute.post('/auth/register', register);
 authRoute.post('/auth/login', login);
 authRoute.post('/auth/logout', logout);
 authRoute.put('/auth/update-profile', protectRoute, updateProfile);
-authRoute.get('/check', protectRoute, checkAuth);
+authRoute.get('/auth/check', protectRoute, checkAuth);
 
 export default authRoute;
