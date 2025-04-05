@@ -29,7 +29,6 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     const newUser = new User({
       name,
       username,
-
       password: hashedPassword,
     });
 
@@ -45,6 +44,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
           username: newUser.username,
         },
       });
+      return
     }
 
     res.status(400).json({ success: false, error: 'User already exists' });
