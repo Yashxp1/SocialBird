@@ -6,18 +6,19 @@ import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import { useAuthStore } from './store/userAuthStore';
 import { useEffect } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
 
   useEffect(() => {
-    checkAuth;
+    checkAuth();
   }, [checkAuth]);
 
   console.log(authUser);
 
-  if (isCheckingAuth && !authUser) {
-    return <div>LOADING SEKELETION TO BE ADDED</div>;
+  if (isCheckingAuth) {
+    return <div>LOADING SKELETION TO BE ADDED</div>;
   }
 
   return (
@@ -48,6 +49,9 @@ const App = () => {
           element={authUser ? <Profile /> : <Navigate to={'/'} />}
         />
       </Routes>
+
+      
+      <Toaster />
     </div>
   );
 };
