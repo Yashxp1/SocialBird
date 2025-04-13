@@ -14,7 +14,7 @@ const Profile = () => {
     reader.readAsDataURL(file);
 
     reader.onload = async () => {
-      const base64Image = reader.result as string;
+      const base64Image = reader.result as any;
       setSelectedImg(base64Image);
       await updateProfile({ profilePic: base64Image });
     };
@@ -69,7 +69,7 @@ const Profile = () => {
                 Full Name
               </div>
               <p className="mt-1 px-4 py-2.5 bg-zinc-800 rounded-lg border border-zinc-700">
-                {authUser?.fullName}
+                {authUser?.name}
               </p>
             </div>
 
@@ -79,7 +79,7 @@ const Profile = () => {
                 Email Address
               </div>
               <p className="mt-1 px-4 py-2.5 bg-zinc-800 rounded-lg border border-zinc-700">
-                {authUser?.email}
+                {authUser?.username}
               </p>
             </div>
           </div>
@@ -90,7 +90,7 @@ const Profile = () => {
             <div className="space-y-3 text-sm">
               <div className="flex items-center justify-between py-2 border-b border-zinc-700">
                 <span>Member Since</span>
-                <span>{authUser?.createdAt?.split("T")[0]}</span>
+                {/* <span>{authUser?.createdAt?.split("T")[0]}</span> */}
               </div>
               <div className="flex items-center justify-between py-2">
                 <span>Account Status</span>
