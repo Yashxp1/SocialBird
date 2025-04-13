@@ -44,7 +44,7 @@ type AuthStore = {
   // disconnectSocket: () => void;
 };
 
-export const useAuthStore = create<AuthStore>((set, get) => ({
+export const useAuthStore = create<AuthStore>((set) => ({
   authUser: null,
   isRegistering: false,
   isLoggingIn: false,

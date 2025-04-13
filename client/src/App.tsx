@@ -7,6 +7,7 @@ import Settings from './pages/Settings';
 import { useAuthStore } from './store/userAuthStore';
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
+import Navbar from './components/Navbar';
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -23,6 +24,7 @@ const App = () => {
 
   return (
     <div>
+      <Navbar />
       <Routes>
         <Route
           path="/"
@@ -50,7 +52,6 @@ const App = () => {
         />
       </Routes>
 
-      
       <Toaster />
     </div>
   );
