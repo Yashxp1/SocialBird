@@ -11,7 +11,6 @@ import { app, server } from './lib/socket';
 
 dotenv.config();
 
-
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
