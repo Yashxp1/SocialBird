@@ -53,8 +53,11 @@ export const useChatStore = create<chatStoreData>((set, get) => ({
     set({ isMessageLoading: true });
     try {
       const res = await axiosInstance.get<Message[]>(`/messages/${userId}`);
+<<<<<<< HEAD
       console.log('Fetching messages for user:', userId);
 
+=======
+>>>>>>> d574bb69a93d812bd076e863e444cde99355ae52
       set({ messages: res.data });
     } catch (error: any) {
       toast.error(error.response.data.message);
@@ -85,7 +88,11 @@ export const useChatStore = create<chatStoreData>((set, get) => ({
     const socket = useAuthStore.getState().socket;
 
     socket?.on('newMessage', (newMessage) => {
+<<<<<<< HEAD
       if (newMessage !== selectedUser._id) return;
+=======
+      if(newMessage !== selectedUser._id) return 
+>>>>>>> d574bb69a93d812bd076e863e444cde99355ae52
       set({
         messages: [...get().messages, newMessage],
       });
@@ -97,8 +104,12 @@ export const useChatStore = create<chatStoreData>((set, get) => ({
       socket.off('newMessage');
     }
   },
+<<<<<<< HEAD
   setSelectedUser: async (user) => {
     set({ selectedUser: user });
     get().getMessages(user._id);
   },
+=======
+  setSelectedUser: async () => {},
+>>>>>>> d574bb69a93d812bd076e863e444cde99355ae52
 }));

@@ -3,6 +3,7 @@ import User from '../models/user.model';
 import { Document } from 'mongoose';
 import Message from '../models/message.model';
 import cloudinary from '../lib/cloudinary';
+import { getReceiverSocketId, io } from '../lib/socket';
 
 interface RequestWithUser extends Request {
   user?: Document<typeof User>;
@@ -83,6 +84,12 @@ export const sendMessage = async (
     });
 
     await newMessage.save();
+
+    const receiverSocketId = getReceiverSocketId(receiverId);
+
+    if (receiverId) {
+      io.to(receiverSocketId).emit('newMessage', newMessage);
+    }
 
     res.status(201).json(newMessage);
   } catch (error) {
