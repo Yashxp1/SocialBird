@@ -14,24 +14,31 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 w-full z-50 bg-gray-900 text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
- 
-        <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-all">
+        <Link
+          to="/"
+          className="flex items-center gap-2 hover:opacity-80 transition-all"
+        >
           <div className="p-2 rounded-md bg-blue-500/20">
             <MessageSquareText className="w-5 h-5 text-blue-400" />
           </div>
           <span className="text-xl font-semibold">ChatGram</span>
         </Link>
 
-        {/* Routes */}
         <div className="flex items-center gap-4">
-          <Link to="/settings" className="flex items-center gap-1 hover:text-blue-400 transition-colors">
+          <Link
+            to="/settings"
+            className="flex items-center gap-1 hover:text-blue-400 transition-colors"
+          >
             <Settings className="w-4 h-4" />
             <span className="hidden sm:inline">Settings</span>
           </Link>
 
           {authUser && (
             <>
-              <Link to="/profile" className="flex items-center gap-1 hover:text-blue-400 transition-colors">
+              <Link
+                to="/profile"
+                className="flex items-center gap-1 hover:text-blue-400 transition-colors"
+              >
                 <User className="w-4 h-4" />
                 <span className="hidden sm:inline">Profile</span>
               </Link>
