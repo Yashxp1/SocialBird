@@ -8,6 +8,7 @@ type Message = {
   senderId: string;
   receiverId: string;
   text: string;
+  image: string
   createdAt: string;
 };
 
@@ -105,6 +106,7 @@ export const useChatStore = create<chatStoreData>((set, get) => ({
 
   setSelectedUser: async (user) => {
     set({ selectedUser: user });
+    if(!user) return 
     get().getMessages(user._id);
   },
 
