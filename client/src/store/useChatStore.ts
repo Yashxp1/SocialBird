@@ -8,7 +8,7 @@ type Message = {
   senderId: string;
   receiverId: string;
   text: string;
-  image: string
+  image: string;
   createdAt: string;
 };
 
@@ -87,10 +87,12 @@ export const useChatStore = create<chatStoreData>((set, get) => ({
     const socket = useAuthStore.getState().socket;
 
     socket?.on('newMessage', (newMessage) => {
+      const isMessageSentFromSelectedUser =
+        newMessage.senderId === selectedUser._id;
+
+        if(isMessageSentFromSelectedUser) return 
 
       if (newMessage !== selectedUser._id) return;
-
-      if(newMessage !== selectedUser._id) return 
 
       set({
         messages: [...get().messages, newMessage],
@@ -106,8 +108,7 @@ export const useChatStore = create<chatStoreData>((set, get) => ({
 
   setSelectedUser: async (user) => {
     set({ selectedUser: user });
-    if(!user) return 
+    if (!user) return;
     get().getMessages(user._id);
   },
-
 }));
