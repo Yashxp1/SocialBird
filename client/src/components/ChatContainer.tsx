@@ -42,10 +42,10 @@ const ChatContainer = () => {
           <div
             ref={messageEndRef}
             key={message._id}
-            className={`chat ${
-              message.senderId === authUser?._id ? 'bg-purple-900 flex justify-end' : 'bg-blue-900'
+            className={`${
+              message.senderId === authUser?._id ? ' justify-end flex text-end' : ''
             }`}
-          >
+           >
             {/* <div className="chat-image avatar border-red-700 border">
               <div className="size-10">
                 <img
@@ -58,12 +58,21 @@ const ChatContainer = () => {
                 />
               </div>
             </div> */}
+
+            {/* <div className="mb-1">
+              <time className="text-xs opacity-50 m-1">
+                {formatMessageTime(message.createdAt)}
+              </time>
+            </div> */}
+
+            <div className="inline-block">
+
             <div className="mb-1">
-              <time className="text-xs opacity-50 ml-1">
+              <time className="text-xs opacity-50 m-1">
                 {formatMessageTime(message.createdAt)}
               </time>
             </div>
-            <div className="flex flex-col rounded-md">
+
               {message.image && (
                 <img
                   src={message.image}
@@ -71,7 +80,7 @@ const ChatContainer = () => {
                   className="sm:max-w-[200px] rounded-md mb-2"
                 />
               )}
-              {message.text && <p className='pl-2'>{message.text}</p>}
+              {message.text && <p className='px-2 inline-block rounded-md bg-[#23272F]'>{message.text}</p>}
             </div>
           </div>
         ))}
