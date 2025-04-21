@@ -1,9 +1,13 @@
-import { useState } from "react";
-import { useAuthStore } from "../store/userAuthStore";
-import { Camera, Mail, User } from "lucide-react";
+import { useState } from 'react';
+import { useAuthStore } from '../store/userAuthStore';
+import { Camera, Mail, Pencil, User } from 'lucide-react';
 
 const Profile = () => {
   const { authUser, isUpdatingProfile, updateProfile } = useAuthStore();
+
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [newName, setNewName] = useState(authUser?.name || '');
+
   const [selectedImg, setSelectedImg] = useState(null);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,22 +34,24 @@ const Profile = () => {
           </div>
 
           {/* Avatar upload */}
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col  items-center gap-4">
             <div className="relative">
               <img
-                src={selectedImg || authUser?.profilePic || "/avatar.png"}
+                src={selectedImg || authUser?.profilePic || '/avatar.png'}
                 alt="Profile"
                 className="w-32 h-32 rounded-full object-cover border-4 border-zinc-700"
               />
               <label
                 htmlFor="avatar-upload"
                 className={`
-                  absolute bottom-0 right-0 bg-zinc-800 hover:scale-105
+                  absolute bottom-0 right-0 bg-zinc-700 hover:scale-105
                   p-2 rounded-full cursor-pointer transition duration-200
-                  ${isUpdatingProfile ? "animate-pulse pointer-events-none" : ""}
+                  ${
+                    isUpdatingProfile ? 'animate-pulse pointer-events-none' : ''
+                  }
                 `}
               >
-                <Camera className="w-5 h-5 p-3 text-white" />
+                <Camera className="w-5 h-5 p-3 text-amber-800" />
                 <input
                   type="file"
                   id="avatar-upload"
@@ -57,7 +63,9 @@ const Profile = () => {
               </label>
             </div>
             <p className="text-sm text-zinc-400">
-              {isUpdatingProfile ? "Uploading..." : "Click the camera icon to change your photo"}
+              {isUpdatingProfile
+                ? 'Uploading...'
+                : 'Click the camera icon to change your photo'}
             </p>
           </div>
 
@@ -68,15 +76,44 @@ const Profile = () => {
                 <User className="w-4 h-4" />
                 Full Name
               </div>
-              <p className="mt-1 px-4 py-2.5 bg-zinc-800 rounded-lg border border-zinc-700">
-                {authUser?.name}
+              <p className="mt-1 flex justify-between items-center px-4 py-2.5 bg-zinc-800 rounded-lg border border-zinc-700">
+                {isEditingName ? (
+                  <input
+                    type="text"
+                    className="bg-transparent outline-none flex-1"
+                    value={newName}
+                    onChange={(e) => setNewName(e.target.value)}
+                    onBlur={async () => {
+                      if (newName !== authUser?.name) {
+                        await updateProfile({ name: newName });
+                      }
+                      setIsEditingName(false);
+                    }}
+                    onKeyDown={async (e) => {
+                      if (e.key === 'Enter') {
+                        (e.target as HTMLInputElement).blur();
+                      }
+                    }}
+                    autoFocus
+                  />
+                ) : (
+                  <p className="flex-1">{authUser?.name}</p>
+                )}
+                
+                <Pencil
+                  onClick={() => {
+                    setIsEditingName(true);
+                    setNewName(authUser?.name || '');
+                  }}
+                  className="w-4 h-4"
+                />
               </p>
             </div>
 
             <div>
               <div className="flex items-center gap-2 text-sm text-zinc-400">
                 <Mail className="w-4 h-4" />
-                Email Address
+                Username
               </div>
               <p className="mt-1 px-4 py-2.5 bg-zinc-800 rounded-lg border border-zinc-700">
                 {authUser?.username}

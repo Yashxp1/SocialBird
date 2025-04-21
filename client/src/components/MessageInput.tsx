@@ -1,6 +1,6 @@
 import { FormEvent, useRef, useState, ChangeEvent } from 'react';
 import { useChatStore } from '../store/useChatStore';
-import { Image, Send, X } from 'lucide-react';
+import { ImagePlus, Send, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const MessageInput = () => {
@@ -37,6 +37,7 @@ const MessageInput = () => {
     try {
       await sendMessage({
         text: text.trim(),
+        //@ts-ignore
         image: imagePreview,
       });
 
@@ -88,11 +89,11 @@ const MessageInput = () => {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className={`hidden sm:flex items-center justify-center w-10 h-10 rounded-full border border-zinc-300 transition-colors ${
+            className={`hidden sm:flex items-center justify-center w-10 h-10 rounded-full border-2 border-zinc-300 transition-colors ${
               imagePreview ? 'text-emerald-500' : 'text-zinc-400'
             } hover:bg-zinc-100`}
           >
-            <Image size={20} />
+             <ImagePlus size={20}/>
           </button>
         </div>
         <button
