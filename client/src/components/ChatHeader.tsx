@@ -6,7 +6,7 @@ const ChatHeader = () => {
   const { selectedUser, setSelectedUser } = useChatStore();
   const { onlineUsers } = useAuthStore();
   return (
-    <div className="p-2.5 border-b-2 hover:bg-[#1B1B1F] hover:rounded-md border-slate-700 shadow-lg">
+    <div className="p-2.5 border-b-1 border-slate-700 shadow-md">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className=" size-10 rounded-full">

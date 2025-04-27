@@ -5,6 +5,7 @@ import MessageInput from './MessageInput';
 import { useAuthStore } from '../store/userAuthStore';
 import { formatMessageTime } from '../lib/timeFormat';
 
+
 const ChatContainer = () => {
   const {
     messages,
@@ -24,7 +25,12 @@ const ChatContainer = () => {
     subscribeToMessages();
 
     return () => unSubscribeToMessages();
-  }, [selectedUser?._id, getMessages, subscribeToMessages, unSubscribeToMessages]);
+  }, [
+    selectedUser?._id,
+    getMessages,
+    subscribeToMessages,
+    unSubscribeToMessages,
+  ]);
 
   useEffect(() => {
     if (messageEndRef.current && messages)
@@ -34,7 +40,7 @@ const ChatContainer = () => {
   if (isMessageLoading) return <div>LOADING...</div>;
 
   return (
-    <div className="flex-1 flex flex-col">
+    <div className="flex-1 flex flex-col border-l border border-gray-800 ml-1 rounded-lg">
       <ChatHeader />
 
       <div className="flex-1 overflow-auto p-4  space-y-0">
@@ -48,25 +54,6 @@ const ChatContainer = () => {
                 : ''
             }`}
           >
-            {/* <div className="chat-image avatar border-red-700 border">
-              <div className="size-10">
-                <img
-                  src={
-                    message.senderId === authUser?._id
-                      ? authUser.profilePic || '/avatar.png'
-                      : selectedUser?.profilePic || '/avatar.png'
-                  }
-                   className='rounded-full border-red-500 border-2'
-                />
-              </div>
-            </div> */}
-
-            {/* <div className="mb-1">
-              <time className="text-xs opacity-50 m-1">
-                {formatMessageTime(message.createdAt)}
-              </time>
-            </div> */}
-
             <div className="inline-block">
               <div className="mb-1">
                 <time className="text-xs opacity-50 m-1">
@@ -82,9 +69,11 @@ const ChatContainer = () => {
                 />
               )}
               {message.text && (
-                <p className="px-2 inline-block rounded-md bg-[#23272F]">
-                  {message.text}
-                </p>
+                <div>
+                  <p className="px-2 inline-block rounded-md bg-[#23272F]">
+                    {message.text}
+                  </p>
+                </div>
               )}
             </div>
           </div>

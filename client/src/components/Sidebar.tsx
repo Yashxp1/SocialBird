@@ -22,7 +22,7 @@ const Sidebar = () => {
 
   return (
     <aside className="h-full w-20 lg:w-72 flex flex-col transition-all duration-200">
-      <div className="border-b border-base-300 w-full p-5">
+      <div className="border rounded-md border-gray-800 mt-1 border-base-300 w-full p-5">
         <div className="flex items-center gap-2">
           <Users className="size-6" />
           <span className="font-medium hidden lg:block">Contacts</span>
@@ -50,12 +50,12 @@ const Sidebar = () => {
           <button
             key={user._id}
             onClick={() => setSelectedUser(user)}
-            className={`
+            className={` r
               w-full p-3 flex items-center gap-3
-              hover:bg-base-300 transition-colors
+              hover:bg-[#192242] hover:rounded-md transition-colors
               ${
                 selectedUser?._id === user._id
-                  ? 'bg-blue-950 rounded-md border-blue-700 border'
+                  ? 'bg-[#192242] rounded-md border-gray-700 border'
                   : ''
               }
             `}
@@ -74,7 +74,7 @@ const Sidebar = () => {
               )}
             </div>
 
-            {/* User info - only visible on larger screens */}
+           
             <div className="hidden lg:block text-left min-w-0">
               <div className="font-medium truncate">{user.name}</div>
               <div className="text-sm text-zinc-400">

@@ -1,6 +1,6 @@
 import { FormEvent, useRef, useState, ChangeEvent } from 'react';
 import { useChatStore } from '../store/useChatStore';
-import { ImagePlus, Send, X } from 'lucide-react';
+import { Plus,SendHorizontal, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const MessageInput = () => {
@@ -77,7 +77,7 @@ const MessageInput = () => {
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Type a message..."
-            className="w-full px-4 py-2 text-sm sm:text-base rounded-md border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 text-sm sm:text-base rounded-md border-2 border-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="file"
@@ -89,19 +89,19 @@ const MessageInput = () => {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className={`hidden sm:flex items-center justify-center w-10 h-10 rounded-full border-2 border-zinc-300 transition-colors ${
+            className={`hidden sm:flex items-center justify-center w-10 h-10 rounded-full border-2 border-gray-800 transition-colors ${
               imagePreview ? 'text-emerald-500' : 'text-zinc-400'
-            } hover:bg-zinc-100`}
+            } hover:bg-zinc-200`}
           >
-             <ImagePlus size={20}/>
+            <Plus size={20} />
           </button>
         </div>
         <button
           type="submit"
           disabled={!text.trim() && !imagePreview}
-          className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-500 text-white disabled:opacity-50 hover:bg-blue-600 transition-colors"
+          className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-500 text-white hover:bg-blue-600 transition-colors"
         >
-          <Send size={20} />
+          <SendHorizontal size={20} />
         </button>
       </form>
     </div>

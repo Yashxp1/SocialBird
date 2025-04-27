@@ -26,13 +26,7 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center gap-4">
-          {/* <Link
-            to="/settings"
-            className="flex items-center gap-1 px-2 rounded-md py-1 hover:bg-blue-900 transition-colors"
-          >
-            <Settings className="w-4 h-4" />
-            <span className="hidden sm:inline"> </span>
-          </Link> */}
+         
 
           {authUser && (
             <>
