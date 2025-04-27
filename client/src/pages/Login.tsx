@@ -19,6 +19,12 @@ const Login = () => {
     return true;
   };
 
+  const handleTestCredentails = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormData({ username: 'yash123', password: 'yash123' });
+    
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const success = validateForm();
@@ -53,6 +59,14 @@ const Login = () => {
             className="w-full py-2 bg-blue-600 hover:bg-blue-700 rounded text-white font-semibold transition"
           >
             {isLoggingIn ? 'Logging in...' : 'Login'}
+          </button>
+
+          <button
+          onClick={handleTestCredentails}
+            type="submit"
+            className="w-full py-2 bg-blue-600 hover:bg-blue-700 rounded text-white font-semibold transition"
+          >
+            Test Credentails
           </button>
         </form>
         <p className="mt-4 text-center text-sm text-gray-400">
