@@ -64,7 +64,7 @@ const Login = () => {
           <button
           onClick={handleTestCredentails}
             type="submit"
-            className="w-full py-2 bg-blue-600 hover:bg-blue-700 rounded text-white font-semibold transition"
+            className="w-full py-2 bg-white hover:bg-gray-200 rounded text-black font-semibold transition"
           >
             Test Credentails
           </button>
