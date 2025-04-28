@@ -121,13 +121,12 @@ const Profile = () => {
             </div>
           </div>
 
-          {/* Account Info */}
           <div className="mt-6 bg-zinc-900 rounded-xl border border-zinc-800 p-6">
             <h2 className="text-lg font-semibold mb-4">Account Information</h2>
             <div className="space-y-3 text-sm">
               <div className="flex items-center justify-between py-2 border-b border-zinc-700">
                 <span>Member Since</span>
-                {/* <span>{authUser?.createdAt?.split("T")[0]}</span> */}
+               
               </div>
               <div className="flex items-center justify-between py-2">
                 <span>Account Status</span>
