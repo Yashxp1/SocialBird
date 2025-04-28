@@ -8,11 +8,13 @@ import { useAuthStore } from './store/userAuthStore';
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
+import Landing from './pages/Landing';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
 
-  console.log({onlineUsers})
+  console.log({ onlineUsers });
 
   useEffect(() => {
     checkAuth();
@@ -25,22 +27,24 @@ const App = () => {
   }
 
   return (
-    <div className='text-white'>
+    <div className="text-white">
       <Navbar />
       <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="*" element={<NotFound />} />
         <Route
-          path="/"
+          path="/chat"
           element={authUser ? <Home /> : <Navigate to={'/login'} />}
         />
 
         <Route
           path="/register"
-          element={!authUser ? <Register /> : <Navigate to={'/'} />}
+          element={!authUser ? <Register /> : <Navigate to={'/chat'} />}
         />
 
         <Route
           path="/login"
-          element={!authUser ? <Login /> : <Navigate to={'/'} />}
+          element={!authUser ? <Login /> : <Navigate to={'/chat'} />}
         />
 
         <Route
