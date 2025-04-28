@@ -27,4 +27,5 @@ export const loginSchema = z
 
 export const updateSchema = z.object({
   profilePic: profilePicSchema.url().optional(),
+  name: nameSchema.optional(),
 });

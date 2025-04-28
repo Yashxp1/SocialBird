@@ -44,7 +44,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
           username: newUser.username,
         },
       });
-      return
+      return;
     }
 
     res.status(400).json({ success: false, error: 'User already exists' });
@@ -126,16 +126,21 @@ export const updateProfile = async (
       return;
     }
 
-    const { profilePic } = result.data;
+    const { profilePic, name } = result.data;
+
     const userId = req.user?._id;
 
-    let updatedFields: { profilePic?: string } = {};
+    let updatedFields: { profilePic?: string; name?: string } = {};
 
     if (profilePic) {
       const uploadResponse = await cloudinary.uploader.upload(profilePic, {
         folder: 'profile_pics',
       });
       updatedFields.profilePic = uploadResponse.secure_url;
+    }
+
+    if (name) {
+      updatedFields.name = name;
     }
 
     const updatedUser = await User.findByIdAndUpdate(userId, updatedFields, {
