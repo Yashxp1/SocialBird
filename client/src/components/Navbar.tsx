@@ -35,7 +35,10 @@ const Navbar = () => {
                 className="flex items-center gap-1 px-2 rounded-md py-1 hover:bg-blue-900   transition-colors"
               >
                 <User className="w-4 h-4" />
-                <span className="hidden sm:inline">{authUser?.username}</span>
+                <span className="hidden sm:inline">
+                  {/* {authUser?.username} */}
+                  Profile
+                  </span>
               </Link>
 
               <button

@@ -5,12 +5,12 @@ import MessageInput from './MessageInput';
 import { useAuthStore } from '../store/userAuthStore';
 import { formatMessageTime } from '../lib/timeFormat';
 
-
 const ChatContainer = () => {
   const {
     messages,
     getMessages,
     isMessageLoading,
+
     selectedUser,
     subscribeToMessages,
     unSubscribeToMessages,
@@ -54,27 +54,40 @@ const ChatContainer = () => {
                 : ''
             }`}
           >
-            <div className="inline-block">
-              <div className="mb-1">
-                <time className="text-xs opacity-50 m-1">
-                  {formatMessageTime(message.createdAt)}
-                </time>
-              </div>
-
-              {message.image && (
+            <div className="flex items-center">
+              {/* <div className=" size-8 border rounded-full overflow-hidden border-gray-700">
                 <img
-                  src={message.image}
-                  alt="attachment"
-                  className="sm:max-w-[200px] rounded-md mb-2"
+                  src={
+                    message.senderId === authUser?._id
+                      ? authUser.profilePic || './avatar.png'
+                      : selectedUser?.profilePic || './avatar.png'
+                  }
+                  alt="user profile pic"
+                  className="w-full h-full object-cover flex justify-end"
                 />
-              )}
-              {message.text && (
-                <div>
-                  <p className="px-2 inline-block rounded-md bg-[#23272F]">
-                    {message.text}
-                  </p>
+              </div> */}
+              <div className="inline-block">
+                <div className="mb-1">
+                  <time className="text-[10px] opacity-50 m-1">
+                    {formatMessageTime(message.createdAt)}
+                  </time>
                 </div>
-              )}
+
+                {message.image && (
+                  <img
+                    src={message.image}
+                    alt="attachment"
+                    className="sm:max-w-[200px] rounded-md mb-2"
+                  />
+                )}
+                {message.text && (
+                  <div>
+                    <p className="px-2 inline-block  rounded-md bg-[#23272F]">
+                      {message.text}
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         ))}

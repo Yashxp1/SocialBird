@@ -10,9 +10,9 @@ const ChatHeader = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className=" size-10 rounded-full">
-            <div className="relative">
+            <div className=" border w-10 h-10  rounded-full overflow-hidden border-gray-700">
               <img
-                className="rounded-full"
+                className="w-full h-full object-cover"
                 src={selectedUser?.profilePic || '/avatar.png'}
                 alt={selectedUser?.name}
               />
