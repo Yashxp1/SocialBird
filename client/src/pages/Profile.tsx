@@ -51,7 +51,7 @@ const Profile = () => {
                   }
                 `}
               >
-                <Camera className="w-5 h-5 p-3 text-amber-800" />
+                <Camera className="w-5 h-5  text-gray-300" />
                 <input
                   type="file"
                   id="avatar-upload"

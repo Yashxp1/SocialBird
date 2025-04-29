@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import Features from '../components/Features';
+import Footer from '../components/Footer';
 import image from '/image.png';
 const Landing = () => {
   return (
@@ -15,15 +17,17 @@ const Landing = () => {
         </span>
 
         <div className="flex md:flex-row gap-4 py-6 md:py-14">
-          <button className="w-42 py-3 flex justify-center items-center rounded-md bg-blue-500 text-xl">
-            Login
-          </button>
-          <button className="w-42 py-3 flex justify-center items-center rounded-md bg-white text-black text-xl">
-            Get Started
+          <Link to={'/login'}>
+            <button className="w-42 cursor-pointer py-3 flex justify-center items-center rounded-md bg-blue-500 text-xl">
+              Login
+            </button>
+          </Link>
+          <button className="w-42 cursor-pointer py-3 flex justify-center items-center rounded-md bg-white text-black text-xl">
+            Learn More
           </button>
         </div>
 
-        <div className="md:px-28 rounded-md border-gray-700 ">
+        <div className="md:px-28 pt-12 rounded-md border-gray-700 ">
           <img
             src={image}
             alt="chat-screenshot"
@@ -44,6 +48,25 @@ const Landing = () => {
       </div>
       <div className="">
         <Features />
+      </div>
+
+      <div className="border flex flex-col justify-center text-center items-center rounded-md border-gray-700 my-10 py-10 bg-blue-600">
+        <p className="text-5xl font-bold mt-8">Ready to start chatting?</p>
+        <p className="py-10 text-2xl">
+          Join millions of users who trust ChatNow for their communication
+          needs.
+        </p>
+        <Link to={'/register'}>
+          <button className="border cursor-pointer px-6 py-4 rounded-md bg-white text-blue-500 font-bold">
+            Create A Free Account
+          </button>
+        </Link>
+      </div>
+
+      <div className="pb-2">
+        <div className="border border-gray-700 rounded-md pb-6">
+          <Footer />
+        </div>
       </div>
     </div>
   );
