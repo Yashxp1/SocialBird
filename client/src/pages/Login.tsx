@@ -21,7 +21,7 @@ const Login = () => {
 
   const handleTestCredentails = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormData({ username: 'yash123', password: 'yash123' });
+    setFormData({ username: 'John123', password: 'john123' });
     
   };
 
