@@ -77,7 +77,7 @@ const MessageInput = () => {
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Type a message..."
-            className="w-full px-4 py-2 text-sm sm:text-base rounded-md border-2 border-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 text-sm sm:text-base rounded-md border-2 border-gray-700 dark:text-black dark:border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="file"
@@ -89,11 +89,11 @@ const MessageInput = () => {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className={`hidden sm:flex items-center justify-center w-10 h-10 rounded-full border-2 border-gray-800 transition-colors ${
+            className={`hidden sm:flex items-center justify-center w-10 h-10 rounded-full dark:border-gray-300 border-2 border-gray-700 transition-colors ${
               imagePreview ? 'text-emerald-500' : 'text-zinc-400'
             } hover:bg-zinc-200`}
           >
-            <Plus size={20} />
+            <Plus className='size-6' />
           </button>
         </div>
         <button

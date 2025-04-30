@@ -21,10 +21,10 @@ const Sidebar = () => {
   if (isUserLoading) return 'SKELETON';
 
   return (
-    <aside className="h-full w-20 lg:w-72 flex flex-col transition-all duration-200">
-      <div className="border rounded-md border-gray-800 mt-1 border-base-300 w-full p-5">
+    <aside className="h-full w-20 rounded-md lg:w-72 dark:bg-blue-100 dark:text-gray-700 flex flex-col transition-all duration-200">
+      <div className="border rounded-md dark:bg-blue-100 border-gray-700 dark:border-gray-300 mt-1 border-base-300 w-full p-5">
         <div className="flex items-center gap-2">
-          <Users className="size-6" />
+          <Users className="size-6  " />
           <span className="font-medium hidden lg:block">Contacts</span>
         </div>
     
@@ -52,10 +52,10 @@ const Sidebar = () => {
             onClick={() => setSelectedUser(user)}
             className={` r
               w-full p-3 flex items-center gap-3
-              hover:bg-[#192242] hover:rounded-md transition-colors
+              hover:bg-[#192242] dark:hover:bg-blue-500 hover:rounded-md transition-colors
               ${
                 selectedUser?._id === user._id
-                  ? 'bg-[#192242] rounded-md border-gray-700 border'
+                  ? 'bg-[#192242] dark:border-gray-300 dark:bg-blue-300 rounded-md border-gray-700 border'
                   : ''
               }
             `}
@@ -69,7 +69,7 @@ const Sidebar = () => {
               {onlineUsers.includes(user._id) && (
                 <span
                   className="absolute bottom-0 right-0 size-3 bg-green-500 
-                  rounded-full ring-2 ring-zinc-900"
+                  rounded-full ring-2 dark:ring-white ring-zinc-900"
                 />
               )}
             </div>

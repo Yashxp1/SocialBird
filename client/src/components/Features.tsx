@@ -31,8 +31,8 @@ const Features = () => {
   return (
     <div className='pt-10 md:px-22 w-full'>
       {features.map((items, idx) => (
-        <div key={idx} className='p-8 border border-gray-700 rounded-md my-4 transition-colors hover:bg-blue-950'>
-          <div className='text-blue-500'>{items.icon}</div>
+        <div key={idx} className='p-8 border dark:hover:text-white dark:text-black dark:border-gray-300  border-gray-700 rounded-md my-4 transition-colors dark:hover:bg-blue-600 hover:bg-blue-950'>
+          <div className='text-blue-400 '>{items.icon}</div>
           <h3 className='text-2xl font-semibold py-3'>{items.title}</h3>
           <p className='text-gray-400'>{items.description}</p>
         </div>

@@ -6,7 +6,7 @@ import ChatContainer from '../components/ChatContainer';
 const Home = () => {
   const { selectedUser } = useChatStore();
   return (
-    <div className="h-screen bg-[#101828]">
+    <div className="h-screen dark:bg-blue-100 bg-[#101828]">
       <div className="flex items-center justify-center pt-20 px-4">
         <div className="rounded-lg w-full max-w-6xl h-[calc(100vh-5.3rem)]">
           <div className="flex h-full rounded-lg overflow-hidden">

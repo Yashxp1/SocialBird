@@ -32,14 +32,14 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
-      <div className="bg-gray-800 p-8 rounded-xl shadow-lg w-full max-w-md">
+    <div className="flex dark:bg-blue-100 items-center dark:text-black justify-center min-h-screen bg-gray-900 text-white">
+      <div className="bg-gray-800 dark:bg-blue-100  p-8 rounded-xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
             placeholder="Username"
-            className="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 dark:bg-blue-100 focus:outline-none focus:ring-2 dark:border-gray-300 dark:text-black focus:ring-blue-500"
             value={formData.username}
             onChange={(e) =>
               setFormData({ ...formData, username: e.target.value })
@@ -48,7 +48,7 @@ const Login = () => {
           <input
             type="password"
             placeholder="Password"
-            className="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 rounded bg-gray-700 dark:text-black text-white border border-gray-600 dark:bg-blue-100 dark:border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={formData.password}
             onChange={(e) =>
               setFormData({ ...formData, password: e.target.value })
@@ -64,7 +64,7 @@ const Login = () => {
           <button
           onClick={handleTestCredentails}
             type="submit"
-            className="w-full py-2 bg-white hover:bg-gray-200 rounded text-black font-semibold transition"
+            className="w-full py-2 bg-white hover:bg-gray-200 rounded text-black dark:hover:bg-gray-700 dark:hover:text-white font-semibold transition"
           >
             Test Credentails
           </button>

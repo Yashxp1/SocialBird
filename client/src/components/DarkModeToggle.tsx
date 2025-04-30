@@ -1,3 +1,4 @@
+import { Moon, Sun } from 'lucide-react';
 import { useDarkMode } from '../context/ThemeContext';
 
 const DarkModeToggle = () => {
@@ -6,9 +7,9 @@ const DarkModeToggle = () => {
   return (
     <button
       onClick={() => setDarkMode(!darkMode)}
-      className="bg-gray-700 px-4 rounded-md"
+      className="transition-all rounded-full"
     >
-      {darkMode ? '☀️Light' : '🌑 Dark'}
+      {darkMode ? <Sun className='text-[#3D90D7]'/> : <Moon />}
     </button>
   );
 };

@@ -11,7 +11,7 @@ const NoChatSelected = () => {
               className="w-64 h-64 rounded-2xl flex items-center
              justify-center"
             >
-              <Origami className="w-96 h-96 text-gray-700" />
+              <Origami className="w-96 h-96 dark:text-blue-400 text-gray-700" />
             </div>
           </div>
         </div>

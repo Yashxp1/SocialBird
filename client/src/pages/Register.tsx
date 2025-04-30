@@ -29,10 +29,10 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-900 dark:bg-blue-100 text-white dark:text-black px-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-gray-800 p-8 rounded-2xl shadow-md w-full max-w-md space-y-4"
+        className="bg-gray-800 dark:bg-blue-100 p-8 rounded-xl shadow-md w-full max-w-md space-y-4"
       >
         <h2 className="text-2xl font-semibold text-center">Register</h2>
 
@@ -41,7 +41,7 @@ const Register = () => {
           placeholder="Name"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 border dark:text-black rounded-md dark:bg-blue-100 border-gray-700 bg-gray-700 dark:border-gray-300 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
         <input
@@ -49,7 +49,7 @@ const Register = () => {
           placeholder="Username"
           value={formData.username}
           onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-          className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 border dark:text-black rounded-md dark:bg-blue-100 border-gray-700 bg-gray-700 dark:border-gray-300 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
         <input
@@ -57,13 +57,13 @@ const Register = () => {
           placeholder="Password"
           value={formData.password}
           onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-          className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 border dark:text-black rounded-md dark:bg-blue-100 border-gray-700 bg-gray-700 dark:border-gray-300 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
         <button
           type="submit"
           disabled={isRegistering}
-          className="w-full py-2 bg-blue-600 hover:bg-blue-700 transition rounded-lg font-medium"
+          className="w-full py-2 bg-blue-600 dark:text-white hover:bg-blue-700 transition rounded-md font-medium"
         >
           {isRegistering ? 'Loading...' : 'Create an Account'}
         </button>

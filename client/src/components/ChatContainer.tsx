@@ -40,7 +40,7 @@ const ChatContainer = () => {
   if (isMessageLoading) return <div>LOADING...</div>;
 
   return (
-    <div className="flex-1 flex flex-col border-l border border-gray-800 ml-1 rounded-lg">
+    <div className="flex-1 dark:bg-blue-100 flex flex-col border-l border border-gray-700 dark:border-gray-300 ml-1 rounded-lg">
       <ChatHeader />
 
       <div className="flex-1 overflow-auto p-4  space-y-0">
@@ -55,20 +55,10 @@ const ChatContainer = () => {
             }`}
           >
             <div className="flex items-center">
-              {/* <div className=" size-8 border rounded-full overflow-hidden border-gray-700">
-                <img
-                  src={
-                    message.senderId === authUser?._id
-                      ? authUser.profilePic || './avatar.png'
-                      : selectedUser?.profilePic || './avatar.png'
-                  }
-                  alt="user profile pic"
-                  className="w-full h-full object-cover flex justify-end"
-                />
-              </div> */}
+             
               <div className="inline-block">
                 <div className="mb-1">
-                  <time className="text-[10px] opacity-50 m-1">
+                  <time className="text-[10px] dark:text-gray-700 opacity-50 m-1">
                     {formatMessageTime(message.createdAt)}
                   </time>
                 </div>
@@ -82,7 +72,7 @@ const ChatContainer = () => {
                 )}
                 {message.text && (
                   <div>
-                    <p className="px-2 inline-block  rounded-md bg-[#23272F]">
+                    <p className="px-2 py-1 inline-block dark:bg-blue-700 rounded-md bg-[#23272F]">
                       {message.text}
                     </p>
                   </div>
