@@ -36,8 +36,8 @@ const Navbar = () => {
               >
                 <User className="w-4 h-4" />
                 <span className="hidden sm:inline">
-                  {/* {authUser?.username} */}
-                  Profile
+                  {authUser?.username}
+                  {/* Profile */}
                   </span>
               </Link>
 
