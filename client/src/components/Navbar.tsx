@@ -1,9 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { LogOut, Origami, User } from 'lucide-react';
 import { useAuthStore } from '../store/userAuthStore';
+import { useChatStore } from '../store/useChatStore';
 
 const Navbar = () => {
   const { authUser, logout } = useAuthStore();
+  const { selectedUser } = useChatStore();
 
   const navigate = useNavigate();
 
@@ -26,19 +28,20 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center gap-4">
-         
-
           {authUser && (
             <>
               <Link
                 to="/profile"
                 className="flex items-center gap-1 px-2 rounded-md py-1 hover:bg-blue-900   transition-colors"
               >
-                <User className="w-4 h-4" />
-                <span className="hidden sm:inline">
-                  {authUser?.username}
-                  {/* Profile */}
-                  </span>
+                {' '}
+                <div className='flex items-center justify-center gap-2'>
+                  <img
+                    src={authUser?.profilePic || '/avatar.png'}
+                    className="size-6 border border-gray-700 rounded-full object-cover"
+                  />
+                  <span className="hidden sm:inline">{authUser?.username}</span>
+                </div>
               </Link>
 
               <button
