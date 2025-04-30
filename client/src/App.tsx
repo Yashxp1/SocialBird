@@ -10,6 +10,8 @@ import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
 import Landing from './pages/Landing';
 import NotFound from './pages/NotFound';
+import { ThemeProvider } from './context/ThemeContext';
+import './index.css'
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
@@ -27,39 +29,43 @@ const App = () => {
   }
 
   return (
-    <div className="text-white">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={authUser ? <Home /> : <Landing />} />
-        <Route path="*" element={<NotFound />} />
-        <Route
-          path="/chat"
-          element={authUser ? <Home /> : <Navigate to={'/login'} />}
-        />
+    <>
+      <ThemeProvider>
+        <div className="text-white">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={authUser ? <Home /> : <Landing />} />
+            <Route path="*" element={<NotFound />} />
+            <Route
+              path="/chat"
+              element={authUser ? <Home /> : <Navigate to={'/login'} />}
+            />
 
-        <Route
-          path="/register"
-          element={!authUser ? <Register /> : <Navigate to={'/chat'} />}
-        />
+            <Route
+              path="/register"
+              element={!authUser ? <Register /> : <Navigate to={'/chat'} />}
+            />
 
-        <Route
-          path="/login"
-          element={!authUser ? <Login /> : <Navigate to={'/chat'} />}
-        />
+            <Route
+              path="/login"
+              element={!authUser ? <Login /> : <Navigate to={'/chat'} />}
+            />
 
-        <Route
-          path="/settings"
-          element={authUser ? <Settings /> : <Navigate to={'/login'} />}
-        />
+            <Route
+              path="/settings"
+              element={authUser ? <Settings /> : <Navigate to={'/login'} />}
+            />
 
-        <Route
-          path="/profile"
-          element={authUser ? <Profile /> : <Navigate to={'/'} />}
-        />
-      </Routes>
+            <Route
+              path="/profile"
+              element={authUser ? <Profile /> : <Navigate to={'/'} />}
+            />
+          </Routes>
 
-      <Toaster />
-    </div>
+          <Toaster />
+        </div>
+      </ThemeProvider>
+    </>
   );
 };
 
