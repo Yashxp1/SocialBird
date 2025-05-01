@@ -11,7 +11,8 @@ import Navbar from './components/Navbar';
 import Landing from './pages/Landing';
 import NotFound from './pages/NotFound';
 import { ThemeProvider } from './context/ThemeContext';
-import './index.css'
+import './index.css';
+import LoadingText from './components/LoadingText';
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
@@ -25,7 +26,7 @@ const App = () => {
   console.log(authUser);
 
   if (isCheckingAuth) {
-    return <div>LOADING SKELETION TO BE ADDED</div>;
+    return <LoadingText />;
   }
 
   return (
