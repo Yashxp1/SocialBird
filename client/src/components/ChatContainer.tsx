@@ -4,6 +4,7 @@ import ChatHeader from './ChatHeader';
 import MessageInput from './MessageInput';
 import { useAuthStore } from '../store/userAuthStore';
 import { formatMessageTime } from '../lib/timeFormat';
+import LoadingText from './LoadingText';
 
 const ChatContainer = () => {
   const {
@@ -37,7 +38,7 @@ const ChatContainer = () => {
       messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  if (isMessageLoading) return <div>LOADING...</div>;
+  if (isMessageLoading) return <LoadingText />;
 
   return (
     <div className="flex-1 dark:bg-blue-100 flex flex-col border-l border border-gray-700 dark:border-gray-300 ml-1 rounded-lg">
@@ -55,7 +56,6 @@ const ChatContainer = () => {
             }`}
           >
             <div className="flex items-center">
-             
               <div className="inline-block">
                 <div className="mb-1">
                   <time className="text-[10px] dark:text-gray-700 opacity-50 m-1">
