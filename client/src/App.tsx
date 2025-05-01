@@ -31,7 +31,7 @@ const App = () => {
   return (
     <>
       <ThemeProvider>
-        <div className="text-white">
+        <div className="text-white font-urbanist">
           <Navbar />
           <Routes>
             <Route path="/" element={authUser ? <Home /> : <Landing />} />
