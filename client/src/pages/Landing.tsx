@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom';
 import Features from '../components/Features';
 import Footer from '../components/Footer';
+<<<<<<< HEAD
 import darkImg from '/darkImg.png';
 import lightImg from '/lightImg.png';
+=======
+import dark from '/dark.png';
+import light from '/light.png';
+>>>>>>> 8c2813dae911dc24436d8db423e744dc3452bf95
 import { useDarkMode } from '../context/ThemeContext';
 
 const Landing = () => {
   const { darkMode } = useDarkMode();
+<<<<<<< HEAD
   return (
     <div className="bg-gray-900 dark:bg-blue-100 pt-16 px-4">
       <div className="flex flex-col justify-center items-center ">
@@ -19,21 +25,42 @@ const Landing = () => {
             colleagues. Stay connected with the people who matter most.
           </p>
         </span>
+=======
+>>>>>>> 8c2813dae911dc24436d8db423e744dc3452bf95
 
-        <div className="flex md:flex-row gap-4 py-6 md:py-14">
-          <Link to={'/login'}>
-            <button className="w-42 cursor-pointer py-3 flex justify-center items-center rounded-md bg-blue-500 text-xl hover:scale-105 transition-all">
-              Login
+  return (
+    <div>
+      <div className="bg-gray-900 dark:bg-blue-100 pt-16 px-4">
+        <div className="flex flex-col justify-center items-center ">
+          <span className="flex flex-col justify-center items-center">
+            <h1 className="text-4xl text-blue-600 md:text-6xl lg:text-6xl pt-10 md:pt-18 font-bold">
+              Connect with anyone, anywhere, anytime
+            </h1>
+            <p className="text-gray-400 text-md md:text-lg lg:text-2xl pt-3  font-semibold">
+              A simple and secure way to chat with friends, family, and
+              colleagues. Stay connected with the people who matter most.
+            </p>
+          </span>
+
+          <div className="flex md:flex-row gap-4 py-6 md:py-14">
+            <Link to={'/login'}>
+              <button className="w-42 cursor-pointer py-3 flex justify-center items-center rounded-md bg-blue-500 text-xl hover:scale-105 transition-all">
+                Login
+              </button>
+            </Link>
+            <button className="w-42 cursor-pointer py-3 flex justify-center items-center rounded-md bg-white text-black text-xl hover:scale-105 transition-all">
+              Learn More
             </button>
-          </Link>
-          <button className="w-42 cursor-pointer py-3 flex justify-center items-center rounded-md bg-white text-black text-xl hover:scale-105 transition-all">
-            Learn More
-          </button>
+          </div>
         </div>
 
         <div className="md:px-28 pt-12 rounded-md border-gray-700 ">
           <img
+<<<<<<< HEAD
             src={darkMode ? lightImg : darkImg}
+=======
+            src={darkMode ? dark : light}
+>>>>>>> 8c2813dae911dc24436d8db423e744dc3452bf95
             alt="chat-screenshot"
             className="border-2 border-gray-700 dark:border-gray-300 w-full rounded-md object-cover shadow-2xl shadow-purple-600 dark:shadow-blue-600"
           />
