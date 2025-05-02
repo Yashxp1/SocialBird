@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import Features from '../components/Features';
 import Footer from '../components/Footer';
-import image from '/image.png';
 import DARKimg from '/DARKimg.png';
 import LIGHTimg from '/LIGHTimg.png';
 import { useDarkMode } from '../context/ThemeContext';
@@ -9,27 +8,30 @@ import { useDarkMode } from '../context/ThemeContext';
 const Landing = () => {
   const { darkMode } = useDarkMode();
   return (
-    <div className="bg-gray-900 dark:bg-blue-100 pt-16 px-4">
-      <div className="flex flex-col justify-center items-center ">
-        <span className="flex flex-col justify-center items-center">
-          <h1 className="text-4xl text-blue-600 md:text-6xl lg:text-6xl pt-10 md:pt-18 font-bold">
-            Connect with anyone, anywhere, anytime
-          </h1>
-          <p className="text-gray-400 text-md md:text-lg lg:text-2xl pt-3  font-semibold">
-            A simple and secure way to chat with friends, family, and
-            colleagues. Stay connected with the people who matter most.
-          </p>
-        </span>
+    <div>
 
-        <div className="flex md:flex-row gap-4 py-6 md:py-14">
-          <Link to={'/login'}>
-            <button className="w-42 cursor-pointer py-3 flex justify-center items-center rounded-md bg-blue-500 text-xl hover:scale-105 transition-all">
-              Login
+      <div className="bg-gray-900 dark:bg-blue-100 pt-16 px-4">
+        <div className="flex flex-col justify-center items-center ">
+          <span className="flex flex-col justify-center items-center">
+            <h1 className="text-4xl text-blue-600 md:text-6xl lg:text-6xl pt-10 md:pt-18 font-bold">
+              Connect with anyone, anywhere, anytime
+            </h1>
+            <p className="text-gray-400 text-md md:text-lg lg:text-2xl pt-3  font-semibold">
+              A simple and secure way to chat with friends, family, and
+              colleagues. Stay connected with the people who matter most.
+            </p>
+          </span>
+
+          <div className="flex md:flex-row gap-4 py-6 md:py-14">
+            <Link to={'/login'}>
+              <button className="w-42 cursor-pointer py-3 flex justify-center items-center rounded-md bg-blue-500 text-xl hover:scale-105 transition-all">
+                Login
+              </button>
+            </Link>
+            <button className="w-42 cursor-pointer py-3 flex justify-center items-center rounded-md bg-white text-black text-xl hover:scale-105 transition-all">
+              Learn More
             </button>
-          </Link>
-          <button className="w-42 cursor-pointer py-3 flex justify-center items-center rounded-md bg-white text-black text-xl hover:scale-105 transition-all">
-            Learn More
-          </button>
+          </div>
         </div>
 
         <div className="md:px-28 pt-12  rounded-md border-gray-700 ">
