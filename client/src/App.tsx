@@ -3,7 +3,6 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
-import Settings from './pages/Settings';
 import { useAuthStore } from './store/userAuthStore';
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
@@ -50,11 +49,6 @@ const App = () => {
             <Route
               path="/login"
               element={!authUser ? <Login /> : <Navigate to={'/chat'} />}
-            />
-
-            <Route
-              path="/settings"
-              element={authUser ? <Settings /> : <Navigate to={'/login'} />}
             />
 
             <Route

@@ -105,6 +105,7 @@ export const useChatStore = create<chatStoreData>((set, get) => ({
   unSubscribeToMessages: async () => {
     const socket = useAuthStore.getState().socket;
     if (socket?.off) {
+      //@ts-ignore
       socket.off('newMessage');
     }
   },
