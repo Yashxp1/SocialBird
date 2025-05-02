@@ -1,12 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { LogOut, Origami, User } from 'lucide-react';
+import { LogOut, Origami } from 'lucide-react';
 import { useAuthStore } from '../store/userAuthStore';
-import { useChatStore } from '../store/useChatStore';
+// import { useChatStore } from '../store/useChatStore';
 import DarkModeToggle from './DarkModeToggle';
 
 const Navbar = () => {
   const { authUser, logout } = useAuthStore();
-  const { selectedUser } = useChatStore();
+  // const { selectedUser } = useChatStore();
 
   const navigate = useNavigate();
 
@@ -25,7 +25,9 @@ const Navbar = () => {
           <div className="p-2 rounded-md bg-blue-500/20">
             <Origami className="w-5 h-5 dark:text-[#3D90D7] text-blue-400" />
           </div>
-          <span className="text-xl font-semibold dark:text-blue-600">SocialBird</span>
+          <span className="text-xl font-semibold dark:text-blue-600">
+            SocialBird
+          </span>
         </Link>
 
         <div className="flex items-center gap-4">
@@ -55,7 +57,7 @@ const Navbar = () => {
             </>
           )}
           <div className="flex justify-end items-center">
-            <DarkModeToggle/>
+            <DarkModeToggle />
           </div>
         </div>
       </div>
