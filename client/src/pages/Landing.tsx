@@ -2,8 +2,12 @@ import { Link } from 'react-router-dom';
 import Features from '../components/Features';
 import Footer from '../components/Footer';
 import image from '/image.png';
+import DARKimg from '/DARKimg.png';
+import LIGHTimg from '/LIGHTimg.png';
+import { useDarkMode } from '../context/ThemeContext';
 
 const Landing = () => {
+  const { darkMode } = useDarkMode();
   return (
     <div className="bg-gray-900 dark:bg-blue-100 pt-16 px-4">
       <div className="flex flex-col justify-center items-center ">
@@ -28,11 +32,11 @@ const Landing = () => {
           </button>
         </div>
 
-        <div className="md:px-28 pt-12 rounded-md border-gray-700 ">
+        <div className="md:px-28 pt-12  rounded-md border-gray-700 ">
           <img
-            src={image}
+            src={darkMode ? LIGHTimg : DARKimg}
             alt="chat-screenshot"
-            className="border-2 border-gray-700 w-full rounded-md object-cover shadow-2xl shadow-purple-600 dark:shadow-blue-600"
+            className="border-2 border-gray-700 dark:border-gray-300 w-full rounded-md object-cover shadow-2xl shadow-purple-600 dark:shadow-blue-600"
           />
         </div>
         <div className="pt-24">
