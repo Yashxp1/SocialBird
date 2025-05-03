@@ -17,7 +17,7 @@ export default function LoadingText() {
   }, []);
   
   return (
-    <div className="flex flex-col items-center justify-center p-8 bg-gray-100 rounded-lg shadow-md">
+    <div className="flex flex-col items-center justify-center dark:bg-blue-100 bg-gray-900 p-8 bg-gray-100 rounded-lg shadow-md">
       <div className="text-3xl font-bold text-blue-600">
         Loading<span className="inline-block w-12">{dots}</span>
       </div>
