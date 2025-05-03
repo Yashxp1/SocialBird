@@ -7,7 +7,7 @@ export const server = http.createServer(app);
 
 export const io = new Server(server, {
   cors: {
-    origin: "https://socialbird11.vercel.app",
+    origin: "https://socialbird1.vercel.app",
     credentials: true,
   },
 });
