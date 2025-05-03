@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: 'https://socialbird11-git-main-yashxp1s-projects.vercel.app',
+    origin: 'https://socialbird11.vercel.app',
     credentials: true,
   })
 );
