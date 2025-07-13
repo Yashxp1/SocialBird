@@ -4,8 +4,6 @@ import toast from 'react-hot-toast';
 import { io } from 'socket.io-client';
 import { Socket } from 'socket.io';
 
-const BASEURL = 'https://socialbird-chatapp.onrender.com';
-
 export type AuthUser = {
   _id: string;
   name: string;
